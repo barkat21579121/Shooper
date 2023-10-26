@@ -3,6 +3,7 @@ import '../Hero/Hero.css'
 import hand_icon from "../Assets/hand_icon.png"
 import arrow from "../Assets/arrow.png"
 import hero from "../Assets/hero_image.png"
+// import barkat from "../Assets/ba"
 
 const Hero = () => {
   return (

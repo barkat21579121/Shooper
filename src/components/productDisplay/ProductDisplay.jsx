@@ -6,7 +6,7 @@ import { ShopContext } from "../../context/ShopContext";
 
 const ProductDisplay = ({ product }) => {
   const {addToCart}=useContext(ShopContext);
-  debugger
+
   return (
     <div className="Product-display">
       <div className="product-display-left">
