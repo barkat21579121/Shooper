@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../productDisplay/productDisplay.css";
 import star from "../Assets/star_icon.png";
 import start_dul from "../Assets/star_dull_icon.png";
+import { ShopContext } from "../../context/ShopContext";
 
-const ProductDisplay = ({ display }) => {
+const ProductDisplay = ({ product }) => {
+  const {addToCart}=useContext(ShopContext);
+  debugger
   return (
     <div className="Product-display">
       <div className="product-display-left">
         <div className="product-display-img">
-          <img src={display.image} />
-          <img src={display.image} />
-          <img src={display.image} />
-          <img src={display.image} />
+          <img src={product.image} />
+          <img src={product.image} />
+          <img src={product.image} />
+          <img src={product.image} />
         </div>
         <div className="product-img">
-          <img className="productdisplay-main" src={display.image} />
+          <img className="productdisplay-main" src={product.image} />
         </div>
       </div>
       <div className="product-display-right">
-        <h1>{display.name}</h1>
+        <h1>{product.name}</h1>
         <div className="product-display-RightStar">
           <img src={star} alt="" />
           <img src={star} alt="" />
@@ -29,10 +32,10 @@ const ProductDisplay = ({ display }) => {
         </div>
         <div className="product-display-right-price">
           <div className="product-display-right-old-price">
-            ${display.old_price}
+            ${product.old_price}
           </div>
           <div className="product-display-right-new-price">
-            ${display.new_price}
+            ${product.new_price}
           </div>
         </div>
         <div className="product-discription-R">
@@ -50,7 +53,7 @@ const ProductDisplay = ({ display }) => {
               <div>XXL</div>
             </div>
         </div>
-        <button > Add To Cart</button>
+        <button onClick={()=>{addToCart(product.id)}} > Add To Cart</button>
         <p className="Product-display-right-cat"> <span>category:</span>Women , T-shirt ,Crop-Top</p>
         <p className="Product-display-right-cat"> <span>Tags:</span>Modern ,Leatest</p>
 
