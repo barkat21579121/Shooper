@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "../pages/Css/login.css";
 import { useReducer } from "react";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import Login from "./Login";
 // import { type } from "@testing-library/user-event/dist/type";
 
@@ -25,10 +25,14 @@ console.log(initislState);
 const LoginSignUp = () => {
   const [state, dispatch] = useReducer(reducer, { initislState });
 
+
+ 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("kkkk",state);
-    // dispatch("")
+   
+    localStorage.setItem("Rigistration", JSON.stringify(state));
   };
 
   return (

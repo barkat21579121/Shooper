@@ -1,7 +1,7 @@
 import React from "react";
 import "../pages/Css/login.css";
 import { useReducer } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { type } from "@testing-library/user-event/dist/type";
 
 const initislState = {
@@ -21,11 +21,28 @@ function reducer(state, action) {
 console.log(initislState);
 
 const Login = () => {
-  const [State, dispatch] = useReducer(reducer, { initislState });
+  const history =useNavigate()
+  const [State, dispatch] = useReducer(reducer, {initislState });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(State);
+    // console.log(State)
+   const verify = localStorage.getItem("Rigistration");
+   if (verify && verify.length){
+    const getVerified = JSON.parse(verify);
+   const arr= Array.from(getVerified)
+    console.log(typeof(getVerified))
+    const finalizedVerify = arr.filter((item,i)=>{
+ return item.Name === State.UserName && item.PassWord === State.PassWord
+
+    })
+    if (finalizedVerify.length === State){
+      alert ("invalid details ")
+    }else{
+      history("/")
+      localStorage.getItem("user_logedIn", JSON.stringify(finalizedVerify))
+    }
+   }
   };
 
   return (
@@ -52,7 +69,7 @@ const Login = () => {
               }}
             />
           </div>
-       <Link to={"/"}>  <button type="submit">Log In</button></Link> 
+      <button type="submit">Log In</button>
           <p className="login-already">
           Create Account Here {" "}
           <span>
